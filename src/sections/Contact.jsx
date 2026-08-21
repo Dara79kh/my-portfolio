@@ -79,8 +79,7 @@ export const Contact = () => {
       console.error("EmailJS error:", error);
       setSubmitStatus({
         type: "error",
-        message:
-          error.text || "Failed to send message. Please try again later.",
+        message: err.text || "Failed to send message. Please try again later.",
       });
     } finally {
       setIsLoading(false);
