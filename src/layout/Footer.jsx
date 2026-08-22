@@ -2,10 +2,22 @@ import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa6";
 
 const socialLinks = [
-  { icon: FaGithub, href: "#", label: "GitHub" },
-  { icon: FaLinkedin, href: "#", label: "LinkedIn" },
-  { icon: FaFacebook, href: "#", label: "Facebook" },
-  { icon: FaTelegram, href: "#", label: "Telegram" },
+  {
+    icon: FaGithub,
+    href: "https://github.com/Lihuohor79-developer",
+    label: "GitHub",
+  },
+  {
+    icon: FaLinkedin,
+    href: "https://www.linkedin.com/in/lihuo-hor-b415a9412",
+    label: "LinkedIn",
+  },
+  {
+    icon: FaFacebook,
+    href: "https://www.facebook.com/share/19LPfRnc7W/?mibextid=wwXIfr",
+    label: "Facebook",
+  },
+  { icon: FaTelegram, href: "https://t.me/Lyhour79QTY", label: "Telegram" },
 ];
 
 const footerLinks = [

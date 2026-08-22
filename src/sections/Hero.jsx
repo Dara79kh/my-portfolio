@@ -28,10 +28,16 @@ const skills = [
 ];
 export const Hero = () => {
   const socialLinks = [
-    { icon: FaGithub, href: "#" },
-    { icon: FaLinkedin, href: "#" },
-    { icon: FaFacebook, href: "#" },
-    { icon: FaTelegram, href: "#" },
+    { icon: FaGithub, href: "https://github.com/Lihuohor79-developer" },
+    {
+      icon: FaLinkedin,
+      href: "https://www.linkedin.com/in/lihuo-hor-b415a9412",
+    },
+    {
+      icon: FaFacebook,
+      href: "https://www.facebook.com/share/19LPfRnc7W/?mibextid=wwXIfr",
+    },
+    { icon: FaTelegram, href: "https://t.me/Lyhour79QTY" },
   ];
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
