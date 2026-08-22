@@ -92,7 +92,7 @@ export const Contact = () => {
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="relative z-10 mx-auto w-full max-w-5xl min-w-0 px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
@@ -109,7 +109,7 @@ export const Contact = () => {
             and let's discuss how we can work together.
           </p>
         </div>
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="grid w-full min-w-0 grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-12">
           <div className="glass p-8 rounded-3xl border border-primary/30 animate-fade-in animation-delay-300">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -208,8 +208,8 @@ export const Contact = () => {
 
           {/* Contact Info */}
           <div className="space-y-6 animate-fade-in animation-delay-400">
-            <div className="glass rounded-3xl p-8">
-              <h3 className="text-xl font-semibold mb-6">
+            <div className="glass w-full min-w-0 rounded-3xl p-5 sm:p-8">
+              <h3 className="mb-6 text-xl font-semibold">
                 Contact Information
               </h3>
               <div className="space-y-4">
@@ -217,16 +217,56 @@ export const Contact = () => {
                   <a
                     key={i}
                     href={item.href}
-                    className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface transition-colors group"
+                    className="
+      group
+      flex
+      w-full
+      min-w-0
+      items-center
+      gap-4
+      rounded-xl
+      p-3
+      transition-colors
+      hover:bg-surface
+      sm:p-4
+    "
                   >
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                      <item.icon className="w-5 h-5 text-primary" />
+                    {/* Icon */}
+                    <div
+                      className="
+        flex
+        h-12
+        w-12
+        min-w-12
+        shrink-0
+        items-center
+        justify-center
+        rounded-xl
+        bg-primary/10
+        transition-colors
+        group-hover:bg-primary/20
+      "
+                    >
+                      <item.icon className="h-5 w-5 shrink-0 text-primary" />
                     </div>
-                    <div>
+
+                    {/* Text */}
+                    <div className="min-w-0 flex-1 overflow-hidden">
                       <div className="text-sm text-muted-foreground">
                         {item.label}
                       </div>
-                      <div className="font-medium">{item.value}</div>
+
+                      <div
+                        className="
+          break-all
+          text-sm
+          font-medium
+          leading-6
+          sm:text-base
+        "
+                      >
+                        {item.value}
+                      </div>
                     </div>
                   </a>
                 ))}
