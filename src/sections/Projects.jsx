@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
+import { useState } from "react";
 const projects = [
   {
     title: "Salon Booking Platform",
@@ -50,6 +51,7 @@ const projects = [
   },
 ];
 export const Projects = () => {
+  const [activeProject, setActiveProject] = useState(null);
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
       {/* Bg glows */}
@@ -78,8 +80,13 @@ export const Projects = () => {
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
+              className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1 cursor-pointer"
               style={{ animationDelay: `${(idx + 1) * 100}ms` }}
+              onClick={() => {
+                if (window.innerWidth < 768) {
+                  setActiveProject(activeProject === idx ? null : idx);
+                }
+              }}
             >
               {/* Image */}
               <div className="relative overflow-hidden aspect-video">
@@ -94,15 +101,23 @@ export const Projects = () => {
                  to-transparent opacity-60"
                 />
                 {/* Overlay Links */}
-                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                <div
+                  className={`absolute inset-0 flex items-center justify-center gap-4 transition-opacity duration-300 ${
+                    activeProject === idx ? "opacity-100" : "opacity-0"
+                  } md:opacity-0 md:group-hover:opacity-100`}
+                >
+                  {/* Live Project */}
                   <a
                     href={project.link}
+                    onClick={(e) => e.stopPropagation()}
                     className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
                   >
                     <ArrowUpRight className="w-5 h-5" />
                   </a>
+                  {/* GitHub */}
                   <a
                     href={project.github}
+                    onClick={(e) => e.stopPropagation()}
                     className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
                   >
                     <FaGithub className="w-5 h-5" />
