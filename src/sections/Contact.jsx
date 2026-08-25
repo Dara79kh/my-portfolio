@@ -26,7 +26,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Phnom Penh, Cambodia",
+    value: "Mumbai, India",
     href: "#",
   },
 ];
