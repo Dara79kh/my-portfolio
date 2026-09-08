@@ -1,4 +1,11 @@
-import { Code2, Lightbulb, Rocket, User } from "lucide-react";
+import {
+  Code2,
+  Lightbulb,
+  Rocket,
+  User,
+  CloudCog,
+  BrainCircuit,
+} from "lucide-react";
 
 const highlights = [
   {
@@ -23,6 +30,18 @@ const highlights = [
     title: "Innovation",
     description:
       "Staying ahead with the latest technologies and best practices",
+  },
+  {
+    icon: CloudCog,
+    title: "DevOps & Cloud",
+    description:
+      "Automating deployments with Docker, CI/CD, cloud platforms, and modern DevOps practices.",
+  },
+  {
+    icon: BrainCircuit,
+    title: "AI Engineering",
+    description:
+      "Building intelligent applications by integrating AI, automation, and data-driven solutions.",
   },
 ];
 
