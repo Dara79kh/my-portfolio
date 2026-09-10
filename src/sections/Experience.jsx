@@ -58,10 +58,7 @@ export const Experience = () => {
             className="text-muted-foreground
            animate-fade-in animation-delay-200"
           >
-            A timeline of my growth as a Computer Science student and aspiring
-            Full-Stack Developer, exploring modern technologies, building
-            practical projects, and continuously expanding my skills in software
-            engineering.
+            {t("experience.description")}
           </p>
         </div>
         {/* Timeline */}
