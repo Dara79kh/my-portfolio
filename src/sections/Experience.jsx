@@ -1,42 +1,32 @@
+import { useTranslation } from "react-i18next";
+
 const experiences = [
   {
-    period: "2024 — Present",
-    role: "Computer Science Student & Full-Stack Developer",
-    company: "University of Mumbai",
-    description:
-      "Currently pursuing a degree in Computer Science while building full-stack applications and strengthening my knowledge of modern software development, system design, and scalable application architecture.",
+    key: "student",
     technologies: ["React", "Java", "Spring Boot", "PostgreSQL"],
     current: true,
   },
+
   {
-    period: "2025 — Present",
-    role: "Microservices Project Developer",
-    company: "Personal Project",
-    description:
-      "Developing a scalable Salon Booking Platform using a microservices architecture with services for users, salons, bookings, payments, and notifications.",
+    key: "microservices",
     technologies: ["Java", "Spring Boot", "Microservices", "Docker"],
     current: true,
   },
+
   {
-    period: "2024 — 2025",
-    role: "Full-Stack Project Developer",
-    company: "Personal Projects",
-    description:
-      "Built modern web applications including e-commerce systems and portfolio projects, focusing on responsive user interfaces, backend APIs, authentication, database integration, and application management.",
+    key: "fullstack",
     technologies: ["React", "Node.js", "Express", "PostgreSQL"],
     current: false,
   },
+
   {
-    period: "2025 — Present",
-    role: "DevOps & Cloud Learner",
-    company: "Independent Learning",
-    description:
-      "Expanding practical knowledge in containerization, CI/CD pipelines, deployment, and cloud technologies while learning how modern applications are built, tested, and deployed efficiently.",
+    key: "devops",
     technologies: ["Docker", "GitHub Actions", "CI/CD", "AWS"],
     current: true,
   },
 ];
 export const Experience = () => {
+  const { t } = useTranslation();
   return (
     <section id="experience" className="py-32 relative overflow-hidden">
       <div
@@ -50,17 +40,17 @@ export const Experience = () => {
             className="text-secondary-foreground text-sm
            font-medium tracking-wider uppercase animate-fade-in"
           >
-            My Journey
+            {t("experience.label")}
           </span>
           <h2
             className="text-4xl md:text-5xl font-bold
            mt-4 mb-6 animate-fade-in animation-delay-100
             text-secondary-foreground"
           >
-            Growing through{" "}
+            {t("experience.title1")}{" "}
             <span className="font-serif italic font-normal text-white">
               {" "}
-              code, projects, and innovation.
+              {t("experience.title2")}
             </span>
           </h2>
 
@@ -105,12 +95,17 @@ export const Experience = () => {
                     className={`glass p-6 rounded-2xl border border-primary/30 hover:border-primary/50 transition-all duration-500`}
                   >
                     <span className="text-sm text-primary font-medium">
-                      {exp.period}
+                      {t(`experience.items.${exp.key}.period`)}
                     </span>
-                    <h3 className="text-xl font-semibold mt-2">{exp.role}</h3>
-                    <p className="text-muted-foreground">{exp.company}</p>
+                    <h3 className="text-xl font-semibold mt-2">
+                      {t(`experience.items.${exp.key}.role`)}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {" "}
+                      {t(`experience.items.${exp.key}.company`)}
+                    </p>
                     <p className="text-sm text-muted-foreground mt-4">
-                      {exp.description}
+                      {t(`experience.items.${exp.key}.description`)}
                     </p>
                     <div
                       className={`flex flex-wrap gap-2 mt-4 ${

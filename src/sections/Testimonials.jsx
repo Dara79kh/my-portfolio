@@ -1,41 +1,31 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useTranslation } from "react-i18next";
 const testimonials = [
   {
-    quote:
-      "Lyhour is a motivated and passionate Computer Science student who is always eager to learn new technologies. His dedication to building practical projects and improving his technical skills is truly impressive.",
-    author: "Academic Mentor",
-    role: "Computer Science Faculty",
+    key: "mentor",
     avatar:
       "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop",
   },
   {
-    quote:
-      "Lyhour is a great teammate who approaches technical challenges with curiosity and persistence. He is always willing to learn, collaborate, and find practical solutions to complex problems.",
-    author: "Project Teammate",
-    role: "Software Development Collaborator",
+    key: "teammate",
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
   },
   {
-    quote:
-      "What stands out about Lyhour is his commitment to continuous improvement. His interest in full-stack development, microservices, and DevOps demonstrates a strong passion for modern software engineering.",
-    author: "Technical Mentor",
-    role: "Software Engineering Mentor",
+    key: "technical",
     avatar:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
   },
   {
-    quote:
-      "Lyhour brings enthusiasm and a positive mindset to every project. He is focused on turning ideas into real applications and continues to develop his skills through hands-on learning and experimentation.",
-    author: "Development Collaborator",
-    role: "Project Teammate",
+    key: "collaborator",
     avatar:
       "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop",
   },
 ];
 
 export const Testimonials = () => {
+  const { t } = useTranslation();
   const [activeIdx, setActiveIdx] = useState(0);
 
   const next = () => {
@@ -68,19 +58,19 @@ export const Testimonials = () => {
           text-sm font-medium tracking-wider 
           uppercase animate-fade-in"
           >
-            What People Say
+            {t("testimonials.label")}
           </span>
           <h2
             className="text-4xl md:text-5xl 
           font-bold mt-4 mb-6 animate-fade-in 
           animation-delay-100 text-secondary-foreground"
           >
-            Kind words from{" "}
+            {t("testimonials.title1")}{" "}
             <span
               className="font-serif italic 
             font-normal text-white"
             >
-              amazing people.
+              {t("testimonials.title2")}
             </span>
           </h2>
         </div>
@@ -95,7 +85,7 @@ export const Testimonials = () => {
               </div>
 
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8 pt-4">
-                "{testimonials[activeIdx].quote}"
+                "{t(`testimonials.items.${testimonials[activeIdx].key}.quote`)}"
               </blockquote>
 
               <div className="flex items-center gap-4">
@@ -106,10 +96,14 @@ export const Testimonials = () => {
                 />
                 <div>
                   <div className="font-semibold">
-                    {testimonials[activeIdx].author}
+                    {t(
+                      `testimonials.items.${testimonials[activeIdx].key}.author`,
+                    )}
                   </div>
                   <div className="text-sm text-muted-foreground">
-                    {testimonials[activeIdx].role}
+                    {t(
+                      `testimonials.items.${testimonials[activeIdx].key}.role`,
+                    )}
                   </div>
                 </div>
               </div>

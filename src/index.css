@@ -1,18 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Khmer:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
+
 @import "tailwindcss";
 
 @theme {
+  --font-sans: "Inter", "Noto Sans Khmer", "Noto Sans SC", sans-serif;
+  --font-khmer: "Noto Sans Khmer", sans-serif;
+  --font-chinese: "Noto Sans SC", sans-serif;
+  --font-serif: "Playfair Display", serif;
+
   --color-background: #0f1418;
+
   --color-foreground: #f0f2f5;
 
   --color-card: #141a1f;
 
   --color-primary: #20b2a6;
+
   --color-primary-foreground: #ffffff;
 
   --color-secondary: #1f2830;
+
   --color-secondary-foreground: #2bb2a6;
 
   --color-muted: #252e37;
+
   --color-muted-foreground: #7a8491;
 
   --color-border: #242b32;
@@ -20,8 +31,10 @@
   --radius: 0.75rem;
 
   --color-highlight: #f5a623;
+
   --color-surface: #1a2329;
 }
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -38,8 +51,9 @@
     overflow-x: hidden;
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: "Inter", sans-serif;
+    font-family: "Inter", "Noto Sans Khmer", "Noto Sans SC", sans-serif;
   }
+
   #root {
     width: 100%;
     max-width: 100%;
@@ -52,19 +66,24 @@
   *::after {
     box-sizing: border-box;
   }
+
   button {
     cursor: pointer;
   }
+
   input,
   textarea,
   select {
     max-width: 100%;
+    font-family: inherit;
   }
+
   img,
   video,
   svg {
     max-width: 100%;
   }
+
   .font-serif {
     font-family: "Playfair Display", serif;
   }
@@ -82,10 +101,12 @@
     backdrop-filter: blur(24px);
     border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
   }
+
   .glow-text {
     text-shadow: 0 0 30px
       color-mix(in srgb, var(--color-primary) 50%, transparent);
   }
+
   .glow-border {
     box-shadow:
       0 0 20px color-mix(in srgb, var(--color-primary) 20%, transparent),
@@ -100,6 +121,7 @@
       transform: translateY(20px);
       filter: blur(10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -112,12 +134,15 @@
     100% {
       transform: translate(0, 0);
     }
+
     25% {
       transform: translate(20px, -30px);
     }
+
     50% {
       transform: translate(-15px, -20px);
     }
+
     75% {
       transform: translate(30px, 10px);
     }
@@ -128,6 +153,7 @@
     100% {
       transform: translateY(0);
     }
+
     50% {
       transform: translateY(-10px);
     }
@@ -137,6 +163,7 @@
     0% {
       transform: translateX(0);
     }
+
     100% {
       transform: translateX(-50%);
     }
@@ -145,6 +172,7 @@
   .animate-fade-in {
     animation: fade-in 0.8s ease-out both;
   }
+
   .animate-float {
     animation: float 4s ease-in-out infinite;
   }
@@ -152,27 +180,35 @@
   .animate-marquee {
     animation: marquee 30s linear infinite;
   }
+
   .animation-delay-100 {
     animation-delay: 100ms;
   }
+
   .animation-delay-200 {
     animation-delay: 200ms;
   }
+
   .animation-delay-300 {
     animation-delay: 300ms;
   }
+
   .animation-delay-400 {
     animation-delay: 400ms;
   }
+
   .animation-delay-500 {
     animation-delay: 500ms;
   }
+
   .animation-delay-600 {
     animation-delay: 600ms;
   }
+
   .animation-delay-800 {
     animation-delay: 800ms;
   }
+
   @keyframes animated-border {
     0% {
       stroke-dashoffset: 400;
@@ -186,11 +222,13 @@
   .group:hover .animated-border-path {
     animation: animated-border 1.5s linear infinite;
   }
+
   .animated-border:hover {
     background-color: color-mix(in srgb, #26c4b8 15%, transparent);
     backdrop-filter: blur(16px);
     box-shadow: 0 0 20px color-mix(in srgb, #26c4b8 20%, transparent);
   }
+
   .timeline-glow {
     box-shadow:
       0 0 40px color-mix(in srgb, var(--color-primary) 35%, transparent),

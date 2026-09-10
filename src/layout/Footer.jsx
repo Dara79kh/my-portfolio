@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 const socialLinks = [
   {
@@ -28,6 +29,7 @@ const footerLinks = [
 ];
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -40,7 +42,7 @@ export const Footer = () => {
               Lyhour<span className="text-primary">.</span>
             </a>
             <p className="text-sm text-muted-foreground mt-2">
-              © {currentYear} Lyhour Hor. All rights reserved.
+              © {currentYear} Lyhour Hor. {t("footer.copyright")}
             </p>
           </div>
 
@@ -52,7 +54,7 @@ export const Footer = () => {
                 href={link.href}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
-                {link.label}
+                {t(link.key)}
               </a>
             ))}
           </nav>

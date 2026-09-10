@@ -4,6 +4,8 @@ import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa6";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
+import { useTranslation } from "react-i18next";
+
 const skills = [
   "React.js",
   "Vue.js",
@@ -27,6 +29,7 @@ const skills = [
   "Artificial Intelligence",
 ];
 export const Hero = () => {
+  const { t } = useTranslation();
   const socialLinks = [
     { icon: FaGithub, href: "https://github.com/Lihuohor79-developer" },
     {
@@ -76,36 +79,33 @@ export const Hero = () => {
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Web Developer + DevOps Engineer
+                {t("hero.badge")}
               </span>
             </div>
             {/* Headline */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Engineering{" "}
-                <span className="text-primary glow-text">scalable</span>
+                {t("hero.title1")}{" "}
+                <span className="text-primary glow-text">
+                  {t("hero.title2")}
+                </span>
                 <br />
-                solutions, from code
+                {t("hero.title3")}
                 <br />
                 to{" "}
                 <span className="font-serif italic font-normal text-white">
-                  cloud.
+                  {t("hero.title4")}
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                I'm a Computer Science student and aspiring Full-Stack Developer
-                passionate about building scalable, high-performance, and
-                intelligent applications. My technical interests include
-                React.js, Java Spring Boot, microservices, and DevOps. I'm also
-                exploring Artificial Intelligence and Machine Learning to create
-                innovative solutions that combine modern software engineering
-                with intelligent technologies.
+                {t("hero.description")}
               </p>
             </div>
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
               <Button size="lg">
-                Contact Me <ArrowRight className="w-5 h-5" />
+                {t("hero.contact")}
+                <ArrowRight className="w-5 h-5" />
               </Button>
               <a
                 href="/my-resume-2026_zfq.pdf"
@@ -114,14 +114,16 @@ export const Hero = () => {
               >
                 <AnimatedBorderButton>
                   <Download className="w-5 h-5" />
-                  Download CV
+                  {t("hero.downloadCV")}
                 </AnimatedBorderButton>
               </a>
             </div>
 
             {/* Social Links */}
             <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
-              <span className="text-sm text-muted-foreground">Follow Me:</span>
+              <span className="text-sm text-muted-foreground">
+                {t("hero.followMe")}
+              </span>
               {socialLinks.map((social, idx) => (
                 <a
                   key={idx}
@@ -150,7 +152,7 @@ export const Hero = () => {
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
                     <span className="text-sm font-medium">
-                      Available for work
+                      {t("hero.available")}
                     </span>
                   </div>
                 </div>
@@ -158,7 +160,7 @@ export const Hero = () => {
                 <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
                   <div className="text-2xl font-bold text-primary">1+</div>
                   <div className="text-xs text-muted-foreground">
-                    Years Exp.
+                    {t("hero.yearsExp")}
                   </div>
                 </div>
               </div>
@@ -169,7 +171,7 @@ export const Hero = () => {
         {/* skills section */}
         <div className="mt-20 animate-fade-in animation-delay-600">
           <p className="text-sm text-muted-foreground mb-6 text-center">
-            Technologies I work with
+            {t("hero.technologies")}
           </p>
           <div className="relative overflow-hidden">
             <div className="flex animate-marquee">
@@ -192,7 +194,9 @@ export const Hero = () => {
           href="#about"
           className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
         >
-          <span className="text-xs uppercase tracking-wider">Scroll</span>
+          <span className="text-xs uppercase tracking-wider">
+            {t("hero.scroll")}
+          </span>
           <ChevronDown className="w-6 h-6 animate-bounce" />
         </a>
       </div>

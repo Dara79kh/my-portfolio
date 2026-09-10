@@ -6,46 +6,37 @@ import {
   CloudCog,
   BrainCircuit,
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const highlights = [
   {
     icon: Code2,
-    title: "Clean Code",
-    description:
-      "Writing maintainable, scalable code that stands the test of time.",
+    key: "cleanCode",
   },
   {
     icon: Rocket,
-    title: "Performance",
-    description:
-      "Optimizing for speed and delivering lightning-fast user experiences.",
+    key: "performance",
   },
   {
     icon: User,
-    title: "Collaboration",
-    description: "Working clearly with teams to bring ideas to life.",
+    key: "collaboration",
   },
   {
     icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "Staying ahead with the latest technologies and best practices",
+    key: "innovation",
   },
   {
     icon: CloudCog,
-    title: "DevOps & Cloud",
-    description:
-      "Automating deployments with Docker, CI/CD, cloud platforms, and modern DevOps practices.",
+    key: "devops",
   },
   {
     icon: BrainCircuit,
-    title: "AI Engineering",
-    description:
-      "Building intelligent applications by integrating AI, automation, and data-driven solutions.",
+    key: "ai",
   },
 ];
 
 export const About = () => {
+  const { t } = useTranslation();
   return (
     <section id="about" className="py-32 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
@@ -54,54 +45,29 @@ export const About = () => {
           <div className="space-y-8">
             <div className="animate-fade-in">
               <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase">
-                About Me
+                {t("about.label")}
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100 text-secondary-foreground">
-              Building the future,
+              {t("about.title1")}
               <span className="font-serif italic font-normal text-white">
                 {" "}
-                one component at a time.
+                {t("about.title2")}
               </span>
             </h2>
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
-              <p>
-                I'm a passionate Computer Science student and aspiring
-                Full-Stack Developer focused on building modern, scalable, and
-                high-performance software applications. I enjoy turning ideas
-                into practical digital solutions and continuously improving my
-                skills through real-world projects and hands-on learning.
-              </p>
+              <p>{t("about.paragraph1")}</p>
 
-              <p>
-                My main technical interests include React.js and modern frontend
-                development, along with Java and Spring Boot for backend
-                development. I'm particularly interested in REST APIs,
-                microservices, databases, and building reliable applications
-                with clean and maintainable architecture.
-              </p>
+              <p>{t("about.paragraph2")}</p>
 
-              <p>
-                I'm also expanding my knowledge in DevOps, Docker, CI/CD, cloud
-                technologies, and Artificial Intelligence. My goal is to become
-                a skilled software engineer who can design, develop, deploy, and
-                continuously improve complete software solutions from frontend
-                to production.
-              </p>
+              <p>{t("about.paragraph3")}</p>
 
-              <p>
-                When I'm not coding, I enjoy exploring new technologies,
-                building personal projects, contributing to open-source
-                communities, and continuously learning about the rapidly
-                evolving world of software engineering.
-              </p>
+              <p>{t("about.paragraph4")}</p>
             </div>
 
             <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
               <p className="text-lg font-medium italic text-foreground ">
-                "My mission is to build scalable, intelligent, and impactful
-                digital solutions by combining modern frontend and backend
-                technologies, DevOps practices, and continuous learning."
+                "{t("about.mission")}"
               </p>
             </div>
           </div>
@@ -109,16 +75,22 @@ export const About = () => {
           <div className="grid sm:grid-cols-2 gap-6">
             {highlights.map((item, idx) => (
               <div
-                key={idx}
+                key={item.key}
                 className="glass p-6 rounded-2xl animate-fade-in"
-                style={{ animationDelay: `${(idx + 1) * 100}ms` }}
+                style={{
+                  animationDelay: `${(idx + 1) * 100}ms`,
+                }}
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 hover:bg-primary/20 ">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 hover:bg-primary/20">
                   <item.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+
+                <h3 className="text-lg font-semibold mb-2">
+                  {t(`about.highlights.${item.key}.title`)}
+                </h3>
+
                 <p className="text-sm text-muted-foreground">
-                  {item.description}
+                  {t(`about.highlights.${item.key}.description`)}
                 </p>
               </div>
             ))}

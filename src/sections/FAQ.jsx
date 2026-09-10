@@ -1,41 +1,18 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const faqs = [
-  {
-    question: "What kind of applications do you build?",
-    answer:
-      "I build modern full-stack web applications that solve real-world problems. My projects combine responsive React interfaces, backend APIs, databases, authentication, and scalable architectures. I'm especially interested in applications that integrate AI to create smarter and more useful user experiences.",
-  },
-  {
-    question:
-      "Are you focused on frontend, backend, or full-stack development?",
-    answer:
-      "My primary focus is Full-Stack Development. I enjoy working across the entire application, from building modern interfaces with React and Tailwind CSS to developing backend services, REST APIs, databases, authentication, and deployment. My goal is to understand how every part of a software system works together.",
-  },
-  {
-    question: "How are you exploring AI in your development journey?",
-    answer:
-      "AI is an important part of my development journey. I'm exploring how Artificial Intelligence can be integrated into full-stack applications through intelligent search, recommendations, automation, conversational interfaces, and data-driven features. My goal is to understand how AI can be used to solve real-world problems rather than simply using AI tools.",
-  },
-  {
-    question: "Which technologies do you work with?",
-    answer:
-      "I work with modern technologies across the full development stack, including React.js, JavaScript, Java, Spring Boot, REST APIs, Microservices, Spring Cloud, PostgreSQL, MongoDB, Docker, Git, GitHub Actions, CI/CD, AWS, RabbitMQ, Tailwind CSS, and Artificial Intelligence. I'm continuously learning and expanding my technology stack.",
-  },
-  {
-    question: "What are you currently learning and exploring?",
-    answer:
-      "As a Computer Science student, I'm continuously improving my knowledge through projects and hands-on development. I'm currently focusing on Full-Stack Development, Spring Boot, Microservices, DevOps, Cloud technologies, AI integration, system design, and problem-solving. I believe modern developers need to keep learning as technology continues to evolve.",
-  },
-  {
-    question: "What kind of opportunities are you looking for?",
-    answer:
-      "I'm looking for opportunities where I can apply my Computer Science knowledge to real-world software development, contribute to meaningful projects, and continue growing as a Full-Stack Developer. I'm particularly interested in internships, entry-level software engineering roles, and opportunities involving Full-Stack Development, AI, Cloud, and modern software technologies.",
-  },
+  { key: "applications" },
+  { key: "focus" },
+  { key: "ai" },
+  { key: "technologies" },
+  { key: "learning" },
+  { key: "opportunities" },
 ];
 
 export const FAQ = () => {
+  const { t } = useTranslation();
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -51,19 +28,18 @@ export const FAQ = () => {
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            FAQ
+            {t("faq.label")}
           </span>
 
           <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight animate-fade-in animation-delay-100">
-            Let's talk about{" "}
+            {t("faq.title1")}{" "}
             <span className="font-serif italic font-normal text-white">
-              my work.
+              {t("faq.title2")}
             </span>
           </h2>
 
           <p className="mt-6 text-muted-foreground text-lg max-w-2xl mx-auto animate-fade-in animation-delay-200">
-            A few answers about my development journey, technologies, AI
-            interests, and the kind of software I'm building.
+            {t("faq.description")}
           </p>
         </div>
 
@@ -108,7 +84,7 @@ export const FAQ = () => {
                           : "text-foreground group-hover:text-primary"
                       }`}
                     >
-                      {faq.question}
+                      {t(`faq.items.${faq.key}.question`)}
                     </span>
                   </div>
 
@@ -141,7 +117,7 @@ export const FAQ = () => {
                       <div className="h-px bg-border mb-6" />
 
                       <p className="text-muted-foreground leading-7 text-base md:text-lg">
-                        {faq.answer}
+                        {t(`faq.items.${faq.key}.answer`)}
                       </p>
                     </div>
                   </div>
@@ -154,7 +130,7 @@ export const FAQ = () => {
         {/* Bottom message */}
         <div className="text-center mt-14 animate-fade-in animation-delay-800">
           <p className="text-sm text-muted-foreground">
-            Interested in building something{" "}
+            {t("faq.bottom")}
             <span className="text-primary font-medium">
               meaningful and innovative
             </span>

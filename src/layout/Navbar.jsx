@@ -1,96 +1,122 @@
 import { Menu, X } from "lucide-react";
 import { Button } from "../components/Button";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#faq", label: "FAQ" },
+  { href: "#about", key: "nav.about" },
+  { href: "#projects", key: "nav.projects" },
+  { href: "#experience", key: "nav.experience" },
+  { href: "#testimonials", key: "nav.testimonials" },
+  { href: "#faq", key: "nav.faq" },
 ];
+
 export const Navbar = () => {
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${isScrolled ? "glass-strong py-3" : "bg-transparent py-5"}  z-50`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
+      }`}
     >
-      <nav className="container mx-auto px-6 flex items-center justify-between">
+      <nav className="container mx-auto flex items-center justify-between px-4 sm:px-6">
         <a
           href="#"
-          className="text-xl font-bold tracking-tight hover:text-primary"
+          className="shrink-0 text-xl font-bold tracking-tight hover:text-primary"
         >
           Lyhour<span className="text-primary">.</span>
         </a>
+
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-1">
-          <div className="glass rounded-full px-2 py-1 flex items-center gap-1">
-            {navLinks.map((link, index) => (
+          <div className="glass flex items-center gap-1 rounded-full px-2 py-1">
+            {navLinks.map((link) => (
               <a
                 href={link.href}
-                key={index}
-                className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-surface"
+                key={link.href}
+                className="rounded-full px-4 py-2 text-sm text-muted-foreground hover:bg-surface hover:text-foreground"
               >
-                {link.label}
+                {t(link.key)}
               </a>
             ))}
           </div>
         </div>
-        {/* CTA Button */}
-        <div className="hidden md:block">
+
+        {/* Desktop CTA + Language */}
+        <div className="hidden md:flex items-center gap-3">
+          <LanguageSwitcher />
+
           <Button
             size="sm"
             onClick={() =>
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("contact")?.scrollIntoView({
+                behavior: "smooth",
+              })
             }
           >
-            Contact Me
+            {t("nav.contact")}
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-foreground cursor-pointer"
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile Controls */}
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageSwitcher />
+
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-white/[0.05]"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
+
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden glass-strong animate-fade-in">
-          <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-            {navLinks.map((link, index) => (
+          <div className="container mx-auto flex flex-col gap-4 px-4 py-6 sm:px-6">
+            {navLinks.map((link) => (
               <a
                 href={link.href}
-                key={index}
+                key={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-lg text-muted-foreground hover:text-foreground py-2"
+                className="py-2 text-lg text-muted-foreground transition-colors hover:text-foreground"
               >
-                {link.label}
+                {t(link.key)}
               </a>
             ))}
-            <Button
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Contact Me
-            </Button>
+
+            <div className="pt-2">
+              <Button
+                className="w-full"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+
+                  document.getElementById("contact")?.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                {t("nav.contact")}
+              </Button>
+            </div>
           </div>
         </div>
       )}

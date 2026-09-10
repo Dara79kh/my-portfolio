@@ -2,11 +2,12 @@ import { ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { useState } from "react";
+
+import { useTranslation } from "react-i18next";
+
 const projects = [
   {
-    title: "Salon Booking Platform",
-    description:
-      "A full-stack salon booking platform built with React and Java Spring Boot using a microservices architecture. Features include authentication, salon management, service booking, payments, reviews, notifications, and an admin dashboard.",
+    key: "salon",
     image: "/projects/project1.png",
     tags: [
       "React",
@@ -19,31 +20,22 @@ const projects = [
     link: "#",
     github: "#",
   },
-
   {
-    title: "E-Commerce Platform",
-    description:
-      "A modern full-stack e-commerce application with product management, shopping cart functionality, authentication, order processing, and an admin dashboard for managing products and customers.",
+    key: "ecommerce",
     image: "/projects/project2.png",
     tags: ["React", "Node.js", "Express", "PostgreSQL", "Prisma", "JWT"],
     link: "#",
     github: "#",
   },
-
   {
-    title: "KhmerBiz AI",
-    description:
-      "An AI-powered platform designed to help businesses improve productivity and access intelligent digital tools. The project focuses on combining modern web technologies with AI to solve practical business problems.",
+    key: "khmerbiz",
     image: "/projects/project3.png",
     tags: ["React", "AI", "JavaScript", "API Integration", "Database"],
     link: "#",
     github: "#",
   },
-
   {
-    title: "Personal Developer Portfolio",
-    description:
-      "A responsive personal portfolio showcasing my projects, technical skills, experience, and journey as a Computer Science student and aspiring Full-Stack Developer.",
+    key: "portfolio",
     image: "/projects/project4.png",
     tags: ["React", "Tailwind CSS", "JavaScript", "Responsive Design"],
     link: "#",
@@ -51,6 +43,7 @@ const projects = [
   },
 ];
 export const Projects = () => {
+  const { t } = useTranslation();
   const [activeProject, setActiveProject] = useState(null);
   return (
     <section id="projects" className="py-32 relative overflow-hidden">
@@ -61,18 +54,17 @@ export const Projects = () => {
         {/* Section Header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
-            Featured Work
+            {t("projects.label")}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
-            Projects that
+            {t("projects.title1")}
             <span className="font-serif italic font-normal text-white">
               {" "}
-              make an impact.
+              {t("projects.title2")}
             </span>
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
-            A selection of my recent work, from complex web applications to
-            innovative tools that solve real-world problems.
+            {t("projects.description")}
           </p>
         </div>
         {/* Projects Grid */}
@@ -129,7 +121,7 @@ export const Projects = () => {
               <div className="p-6 space-y-4">
                 <div className="flex items-start justify-between">
                   <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                    {project.title}
+                    {t(`projects.items.${project.key}.title`)}
                   </h3>
                   <ArrowUpRight
                     className="w-5 h-5 
@@ -139,7 +131,7 @@ export const Projects = () => {
                   />
                 </div>
                 <p className="text-muted-foreground text-sm">
-                  {project.description}
+                  {t(`projects.items.${project.key}.description`)}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, tagIdx) => (
@@ -158,7 +150,7 @@ export const Projects = () => {
         {/* View All CTA */}
         <div className="text-center mt-12 animate-fade-in animation-delay-500">
           <AnimatedBorderButton>
-            View All Projects
+            {t("projects.viewAll")}
             <ArrowUpRight className="w-5 h-5" />
           </AnimatedBorderButton>
         </div>
