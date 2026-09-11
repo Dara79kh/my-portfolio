@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/Button";
 import { ArrowRight, Download, ChevronDown } from "lucide-react";
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
@@ -48,6 +48,40 @@ export const Hero = () => {
   const { t } = useTranslation();
 
   const [activeSkill, setActiveSkill] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) {
+      setActiveSkill(null);
+      return;
+    }
+
+    const interval = setInterval(() => {
+      setActiveSkill((current) => {
+        if (current === null) {
+          return 0;
+        }
+
+        return (current + 1) % skills.length;
+      });
+    }, 1400);
+
+    return () => clearInterval(interval);
+  }, [isMobile]);
 
   const socialLinks = [
     {
@@ -67,10 +101,6 @@ export const Hero = () => {
       href: "https://t.me/Lyhour79QTY",
     },
   ];
-
-  const handleSkillClick = (skillId) => {
-    setActiveSkill((current) => (current === skillId ? null : skillId));
-  };
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -223,37 +253,29 @@ export const Hero = () => {
           </p>
 
           <div className="relative overflow-hidden">
-            <div
-              className={`flex animate-marquee ${
-                activeSkill ? "hover:[animation-play-state:paused]" : ""
-              }`}
-            >
+            <div className="flex animate-marquee">
               {[...skills, ...skills].map((skill, idx) => {
-                const skillId = `${skill.name}-${idx}`;
-                const isActive = activeSkill === skillId;
+                const skillIndex = idx % skills.length;
+                const isMobileActive = isMobile && activeSkill === skillIndex;
 
                 return (
                   <div
-                    key={skillId}
+                    key={`${skill.name}-${idx}`}
                     className="flex-shrink-0 px-3 py-4 sm:px-4"
                   >
                     <div
-                      tabIndex={0}
-                      onClick={() => handleSkillClick(skillId)}
                       className={`
                         group relative flex h-20 w-28
-                        cursor-pointer flex-col
-                        items-center justify-center
+                        flex-col items-center justify-center
                         gap-2 rounded-2xl border
                         bg-[#0d1420]/80 px-3
                         backdrop-blur-xl
                         transition-all duration-500 ease-out
-                        focus:outline-none
                         sm:h-24 sm:w-32
 
                         ${
-                          isActive
-                            ? "-translate-y-2 scale-[1.03] border-primary/40 bg-[#111a28] shadow-[0_18px_45px_rgba(79,140,255,0.18)]"
+                          isMobileActive
+                            ? "-translate-y-2 scale-[1.03] border-primary/40 bg-[#111a28] shadow-[0_18px_45px_rgba(79,140,255,0.22)]"
                             : "border-white/[0.07]"
                         }
 
@@ -261,7 +283,7 @@ export const Hero = () => {
                         hover:scale-[1.03]
                         hover:border-primary/40
                         hover:bg-[#111a28]
-                        hover:shadow-[0_18px_45px_rgba(79,140,255,0.18)]
+                        hover:shadow-[0_18px_45px_rgba(79,140,255,0.22)]
                       `}
                     >
                       {/* Bottom Glow */}
@@ -270,11 +292,11 @@ export const Hero = () => {
                           pointer-events-none
                           absolute inset-x-4 -bottom-3
                           h-5 rounded-full
-                          bg-primary/20 blur-xl
+                          bg-primary/25 blur-xl
                           transition-all duration-500
 
                           ${
-                            isActive
+                            isMobileActive
                               ? "opacity-100"
                               : "opacity-0 group-hover:opacity-100"
                           }
@@ -289,12 +311,12 @@ export const Hero = () => {
                           h-px
                           bg-gradient-to-r
                           from-transparent
-                          via-primary/60
+                          via-primary/70
                           to-transparent
                           transition-all duration-500
 
                           ${
-                            isActive
+                            isMobileActive
                               ? "opacity-100"
                               : "opacity-0 group-hover:opacity-100"
                           }
@@ -309,7 +331,7 @@ export const Hero = () => {
                             transition-all duration-500 ease-out
 
                             ${
-                              isActive
+                              isMobileActive
                                 ? "-translate-y-1"
                                 : "group-hover:-translate-y-1"
                             }
@@ -324,7 +346,7 @@ export const Hero = () => {
                               transition-all duration-500 ease-out
 
                               ${
-                                isActive
+                                isMobileActive
                                   ? "scale-110 opacity-100 grayscale-0"
                                   : "opacity-55 grayscale group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
                               }
@@ -344,7 +366,7 @@ export const Hero = () => {
                           sm:text-xs
 
                           ${
-                            isActive
+                            isMobileActive
                               ? "text-foreground"
                               : "text-muted-foreground/70 group-hover:text-foreground"
                           }
