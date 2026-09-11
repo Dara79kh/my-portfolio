@@ -278,6 +278,7 @@ const km = {
       namePlaceholder: "ឈ្មោះរបស់អ្នក...",
 
       email: "អ៊ីមែល",
+      phone: "ទូរស័ព្ទ",
       emailPlaceholder: "your@email.com",
 
       message: "សារ",

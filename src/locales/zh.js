@@ -273,6 +273,7 @@ const zh = {
       namePlaceholder: "你的姓名...",
 
       email: "邮箱",
+      phone: "电话",
       emailPlaceholder: "your@email.com",
 
       message: "留言",

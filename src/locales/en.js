@@ -278,6 +278,7 @@ const en = {
       namePlaceholder: "Your name...",
 
       email: "Email",
+      phone: "Phone",
       emailPlaceholder: "your@email.com",
 
       message: "Message",
