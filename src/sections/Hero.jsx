@@ -5,27 +5,44 @@ import { FaTelegram } from "react-icons/fa6";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 import { useTranslation } from "react-i18next";
 
+import reactIcon from "../assets/technologies/react.svg";
+import vueIcon from "../assets/technologies/vue.svg";
+import javascriptIcon from "../assets/technologies/javascript.svg";
+import javaIcon from "../assets/technologies/java.svg";
+import springIcon from "../assets/technologies/spring.svg";
+import dockerIcon from "../assets/technologies/docker.svg";
+import gitIcon from "../assets/technologies/git.svg";
+import githubIcon from "../assets/technologies/github.svg";
+import githubActionsIcon from "../assets/technologies/github-actions.svg";
+
+import postgresqlIcon from "../assets/technologies/postgresql.svg";
+import mongodbIcon from "../assets/technologies/mongodb.svg";
+import rabbitmqIcon from "../assets/technologies/rabbitmq.svg";
+import tailwindIcon from "../assets/technologies/tailwind.svg";
+import awsIcon from "../assets/technologies/aws.svg";
+
 const skills = [
-  "React.js",
-  "Vue.js",
-  "JavaScript",
-  "Java",
-  "Spring Boot",
-  "REST APIs",
-  "Microservices",
-  "Spring Cloud",
-  "Docker",
-  "Git",
-  "GitHub",
-  "GitHub Actions",
-  "CI/CD",
-  "DevOps",
-  "AWS",
-  "PostgreSQL",
-  "MongoDB",
-  "RabbitMQ",
-  "Tailwind CSS",
-  "Artificial Intelligence",
+  { name: "React.js", image: reactIcon },
+  { name: "Vue.js", image: vueIcon },
+  { name: "JavaScript", image: javascriptIcon },
+  { name: "Java", image: javaIcon },
+  { name: "Spring Boot", image: springIcon },
+  { name: "REST APIs" },
+  { name: "Microservices" },
+  { name: "Spring Cloud" },
+  { name: "AWS", image: awsIcon },
+  { name: "Docker", image: dockerIcon },
+  { name: "Git", image: gitIcon },
+  { name: "GitHub", image: githubIcon },
+  { name: "GitHub Actions", image: githubActionsIcon },
+  { name: "CI/CD" },
+  { name: "DevOps" },
+
+  { name: "PostgreSQL", image: postgresqlIcon },
+  { name: "MongoDB", image: mongodbIcon },
+  { name: "RabbitMQ", image: rabbitmqIcon },
+  { name: "Tailwind CSS", image: tailwindIcon },
+  { name: "Artificial Intelligence" },
 ];
 
 export const Hero = () => {
@@ -201,10 +218,30 @@ export const Hero = () => {
           <div className="relative overflow-hidden">
             <div className="flex animate-marquee">
               {[...skills, ...skills].map((skill, idx) => (
-                <div key={idx} className="flex-shrink-0 px-8 py-4">
-                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                    {skill}
-                  </span>
+                <div
+                  key={`${skill.name}-${idx}`}
+                  className="flex-shrink-0 px-3 py-4 sm:px-4"
+                >
+                  <div className="group relative flex h-20 w-28 flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.07] bg-[#0d1420]/80 px-3 backdrop-blur-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.03] hover:border-primary/40 hover:bg-[#111a28] hover:shadow-[0_18px_45px_rgba(79,140,255,0.18)] sm:h-24 sm:w-32">
+                    {/* Soft glow behind card */}
+                    <div className="pointer-events-none absolute inset-x-4 -bottom-3 h-5 rounded-full bg-primary/20 opacity-0 blur-xl transition-all duration-500 group-hover:opacity-100" />
+
+                    {/* Technology Icon */}
+                    {skill.image && (
+                      <div className="relative z-10 transition-all duration-500 ease-out group-hover:-translate-y-1">
+                        <img
+                          src={skill.image}
+                          alt={`${skill.name} icon`}
+                          className="h-8 w-8 object-contain opacity-55 grayscale transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
+                        />
+                      </div>
+                    )}
+
+                    {/* Technology Name */}
+                    <span className="relative z-10 text-center text-[10px] font-semibold text-muted-foreground/70 transition-all duration-500 group-hover:text-foreground sm:text-xs">
+                      {skill.name}
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
