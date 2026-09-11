@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Button } from "@/components/Button";
 import { ArrowRight, Download, ChevronDown } from "lucide-react";
 import { FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
@@ -15,6 +14,7 @@ import dockerIcon from "../assets/technologies/docker.svg";
 import gitIcon from "../assets/technologies/git.svg";
 import githubIcon from "../assets/technologies/github.svg";
 import githubActionsIcon from "../assets/technologies/github-actions.svg";
+
 import postgresqlIcon from "../assets/technologies/postgresql.svg";
 import mongodbIcon from "../assets/technologies/mongodb.svg";
 import rabbitmqIcon from "../assets/technologies/rabbitmq.svg";
@@ -37,6 +37,7 @@ const skills = [
   { name: "GitHub Actions", image: githubActionsIcon },
   { name: "CI/CD" },
   { name: "DevOps" },
+
   { name: "PostgreSQL", image: postgresqlIcon },
   { name: "MongoDB", image: mongodbIcon },
   { name: "RabbitMQ", image: rabbitmqIcon },
@@ -46,42 +47,6 @@ const skills = [
 
 export const Hero = () => {
   const { t } = useTranslation();
-
-  const [activeSkill, setActiveSkill] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-
-    checkMobile();
-
-    window.addEventListener("resize", checkMobile);
-
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!isMobile) {
-      setActiveSkill(null);
-      return;
-    }
-
-    const interval = setInterval(() => {
-      setActiveSkill((current) => {
-        if (current === null) {
-          return 0;
-        }
-
-        return (current + 1) % skills.length;
-      });
-    }, 1400);
-
-    return () => clearInterval(interval);
-  }, [isMobile]);
 
   const socialLinks = [
     {
@@ -137,7 +102,7 @@ export const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
+          {/* Left Column - Text Content */}
           <div className="space-y-8">
             {/* Badge */}
             <div className="animate-fade-in">
@@ -209,6 +174,7 @@ export const Hero = () => {
 
           {/* Right Column - Profile Image */}
           <div className="relative animate-fade-in animation-delay-300">
+            {/* Profile Image */}
             <div className="relative max-w-md mx-auto">
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/30 via-transparent to-primary/10 blur-2xl animate-pulse" />
 
@@ -219,7 +185,7 @@ export const Hero = () => {
                   className="w-full aspect-[4/5] object-cover rounded-2xl"
                 />
 
-                {/* Available Badge */}
+                {/* Floating Badge */}
                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
                   <div className="flex items-center gap-3">
                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
@@ -243,10 +209,7 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* =====================================================
-            TECHNOLOGY MARQUEE
-        ====================================================== */}
-
+        {/* Skills Section */}
         <div className="mt-20 animate-fade-in animation-delay-600">
           <p className="text-sm text-muted-foreground mb-6 text-center">
             {t("hero.technologies")}
@@ -254,130 +217,33 @@ export const Hero = () => {
 
           <div className="relative overflow-hidden">
             <div className="flex animate-marquee">
-              {[...skills, ...skills].map((skill, idx) => {
-                const skillIndex = idx % skills.length;
-                const isMobileActive = isMobile && activeSkill === skillIndex;
+              {[...skills, ...skills].map((skill, idx) => (
+                <div
+                  key={`${skill.name}-${idx}`}
+                  className="flex-shrink-0 px-3 py-4 sm:px-4"
+                >
+                  <div className="group relative flex h-20 w-28 flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.07] bg-[#0d1420]/80 px-3 backdrop-blur-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.03] hover:border-primary/40 hover:bg-[#111a28] hover:shadow-[0_18px_45px_rgba(79,140,255,0.18)] sm:h-24 sm:w-32">
+                    {/* Soft glow behind card */}
+                    <div className="pointer-events-none absolute inset-x-4 -bottom-3 h-5 rounded-full bg-primary/20 opacity-0 blur-xl transition-all duration-500 group-hover:opacity-100" />
 
-                return (
-                  <div
-                    key={`${skill.name}-${idx}`}
-                    className="flex-shrink-0 px-3 py-4 sm:px-4"
-                  >
-                    <div
-                      className={`
-                        group relative flex h-20 w-28
-                        flex-col items-center justify-center
-                        gap-2 rounded-2xl border
-                        bg-[#0d1420]/80 px-3
-                        backdrop-blur-xl
-                        transition-all duration-500 ease-out
-                        sm:h-24 sm:w-32
+                    {/* Technology Icon */}
+                    {skill.image && (
+                      <div className="relative z-10 transition-all duration-500 ease-out group-hover:-translate-y-1">
+                        <img
+                          src={skill.image}
+                          alt={`${skill.name} icon`}
+                          className="h-8 w-8 object-contain opacity-55 grayscale transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
+                        />
+                      </div>
+                    )}
 
-                        ${
-                          isMobileActive
-                            ? "-translate-y-2 scale-[1.03] border-primary/40 bg-[#111a28] shadow-[0_18px_45px_rgba(79,140,255,0.22)]"
-                            : "border-white/[0.07]"
-                        }
-
-                        hover:-translate-y-2
-                        hover:scale-[1.03]
-                        hover:border-primary/40
-                        hover:bg-[#111a28]
-                        hover:shadow-[0_18px_45px_rgba(79,140,255,0.22)]
-                      `}
-                    >
-                      {/* Bottom Glow */}
-                      <div
-                        className={`
-                          pointer-events-none
-                          absolute inset-x-4 -bottom-3
-                          h-5 rounded-full
-                          bg-primary/25 blur-xl
-                          transition-all duration-500
-
-                          ${
-                            isMobileActive
-                              ? "opacity-100"
-                              : "opacity-0 group-hover:opacity-100"
-                          }
-                        `}
-                      />
-
-                      {/* Top Light */}
-                      <div
-                        className={`
-                          pointer-events-none
-                          absolute inset-x-6 top-0
-                          h-px
-                          bg-gradient-to-r
-                          from-transparent
-                          via-primary/70
-                          to-transparent
-                          transition-all duration-500
-
-                          ${
-                            isMobileActive
-                              ? "opacity-100"
-                              : "opacity-0 group-hover:opacity-100"
-                          }
-                        `}
-                      />
-
-                      {/* Technology Icon */}
-                      {skill.image && (
-                        <div
-                          className={`
-                            relative z-10
-                            transition-all duration-500 ease-out
-
-                            ${
-                              isMobileActive
-                                ? "-translate-y-1"
-                                : "group-hover:-translate-y-1"
-                            }
-                          `}
-                        >
-                          <img
-                            src={skill.image}
-                            alt={`${skill.name} icon`}
-                            className={`
-                              h-8 w-8
-                              object-contain
-                              transition-all duration-500 ease-out
-
-                              ${
-                                isMobileActive
-                                  ? "scale-110 opacity-100 grayscale-0"
-                                  : "opacity-55 grayscale group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
-                              }
-                            `}
-                          />
-                        </div>
-                      )}
-
-                      {/* Technology Name */}
-                      <span
-                        className={`
-                          relative z-10
-                          text-center
-                          text-[10px]
-                          font-semibold
-                          transition-all duration-500
-                          sm:text-xs
-
-                          ${
-                            isMobileActive
-                              ? "text-foreground"
-                              : "text-muted-foreground/70 group-hover:text-foreground"
-                          }
-                        `}
-                      >
-                        {skill.name}
-                      </span>
-                    </div>
+                    {/* Technology Name */}
+                    <span className="relative z-10 text-center text-[10px] font-semibold text-muted-foreground/70 transition-all duration-500 group-hover:text-foreground sm:text-xs">
+                      {skill.name}
+                    </span>
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
           </div>
         </div>
