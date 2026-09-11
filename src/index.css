@@ -8,31 +8,26 @@
   --font-chinese: "Noto Sans SC", sans-serif;
   --font-serif: "Playfair Display", serif;
 
-  --color-background: #0f1418;
+  --color-background: #080d16;
+  --color-foreground: #f5f7fa;
 
-  --color-foreground: #f0f2f5;
+  --color-card: #111a28;
 
-  --color-card: #141a1f;
-
-  --color-primary: #20b2a6;
-
+  --color-primary: #4f8cff;
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: #1f2830;
+  --color-secondary: #162235;
+  --color-secondary-foreground: #22d3ee;
 
-  --color-secondary-foreground: #2bb2a6;
+  --color-muted: #1a2638;
+  --color-muted-foreground: #94a3b8;
 
-  --color-muted: #252e37;
-
-  --color-muted-foreground: #7a8491;
-
-  --color-border: #242b32;
+  --color-border: #223047;
 
   --radius: 0.75rem;
 
-  --color-highlight: #f5a623;
-
-  --color-surface: #1a2329;
+  --color-highlight: #8b7cff;
+  --color-surface: #0d1420;
 }
 
 @layer base {
@@ -219,14 +214,14 @@
     }
   }
 
-  .group:hover .animated-border-path {
+  .group\:hover .animated-border-path {
     animation: animated-border 1.5s linear infinite;
   }
 
-  .animated-border:hover {
-    background-color: color-mix(in srgb, #26c4b8 15%, transparent);
+  .animated-border\:hover {
+    background-color: color-mix(in srgb, #4f8cff 15%, transparent);
     backdrop-filter: blur(16px);
-    box-shadow: 0 0 20px color-mix(in srgb, #26c4b8 20%, transparent);
+    box-shadow: 0 0 20px color-mix(in srgb, #4f8cff 20%, transparent);
   }
 
   .timeline-glow {
