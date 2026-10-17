@@ -39,10 +39,10 @@ export const Footer = () => {
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
             <a href="#" className="text-xl font-bold tracking-tight">
-              Lyhour<span className="text-primary">.</span>
+              Lihuo<span className="text-primary">.</span>
             </a>
             <p className="text-sm text-muted-foreground mt-2">
-              © {currentYear} Lyhour Hor. {t("footer.copyright")}
+              © {currentYear} Lihuo Hor. {t("footer.copyright")}
             </p>
           </div>
 
