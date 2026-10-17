@@ -186,28 +186,28 @@ const en = {
       items: {
         mentor: {
           quote:
-            "Lyhour is a motivated and passionate Computer Science student who is always eager to learn new technologies. His dedication to building practical projects and improving his technical skills is truly impressive.",
+            "Lihuo is a motivated and passionate Computer Science student who is always eager to learn new technologies. His dedication to building practical projects and improving his technical skills is truly impressive.",
           author: "Academic Mentor",
           role: "Computer Science Faculty",
         },
 
         teammate: {
           quote:
-            "Lyhour is a great teammate who approaches technical challenges with curiosity and persistence. He is always willing to learn, collaborate, and find practical solutions to complex problems.",
+            "Lihuo is a great teammate who approaches technical challenges with curiosity and persistence. He is always willing to learn, collaborate, and find practical solutions to complex problems.",
           author: "Project Teammate",
           role: "Software Development Collaborator",
         },
 
         technical: {
           quote:
-            "What stands out about Lyhour is his commitment to continuous improvement. His interest in full-stack development, microservices, and DevOps demonstrates a strong passion for modern software engineering.",
+            "What stands out about Lihuo is his commitment to continuous improvement. His interest in full-stack development, microservices, and DevOps demonstrates a strong passion for modern software engineering.",
           author: "Technical Mentor",
           role: "Software Engineering Mentor",
         },
 
         collaborator: {
           quote:
-            "Lyhour brings enthusiasm and a positive mindset to every project. He is focused on turning ideas into real applications and continues to develop his skills through hands-on learning and experimentation.",
+            "Lihuo brings enthusiasm and a positive mindset to every project. He is focused on turning ideas into real applications and continues to develop his skills through hands-on learning and experimentation.",
           author: "Development Collaborator",
           role: "Project Teammate",
         },

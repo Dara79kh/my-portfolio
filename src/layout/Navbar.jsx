@@ -38,7 +38,7 @@ export const Navbar = () => {
           href="#"
           className="shrink-0 text-xl font-bold tracking-tight hover:text-primary"
         >
-          Lyhour<span className="text-primary">.</span>
+          Lihuo<span className="text-primary">.</span>
         </a>
 
         {/* Desktop Nav */}

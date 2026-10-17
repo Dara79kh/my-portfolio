@@ -182,28 +182,28 @@ const zh = {
       items: {
         mentor: {
           quote:
-            "Lyhour 是一名积极主动且充满热情的计算机科学学生，总是乐于学习新技术。他对实践项目和技术能力提升的投入令人印象深刻。",
+            "Lihuo 是一名积极主动且充满热情的计算机科学学生，总是乐于学习新技术。他对实践项目和技术能力提升的投入令人印象深刻。",
           author: "Academic Mentor",
           role: "Computer Science Faculty",
         },
 
         teammate: {
           quote:
-            "Lyhour 是一位优秀的团队成员，他以好奇心和坚持面对技术挑战。他始终愿意学习、合作并寻找实际解决方案。",
+            "Lihuo 是一位优秀的团队成员，他以好奇心和坚持面对技术挑战。他始终愿意学习、合作并寻找实际解决方案。",
           author: "Project Teammate",
           role: "Software Development Collaborator",
         },
 
         technical: {
           quote:
-            "Lyhour 最突出的特点是他对持续进步的重视。他对全栈开发、微服务和 DevOps 的兴趣体现了他对现代软件工程的热情。",
+            "Lihuo 最突出的特点是他对持续进步的重视。他对全栈开发、微服务和 DevOps 的兴趣体现了他对现代软件工程的热情。",
           author: "Technical Mentor",
           role: "Software Engineering Mentor",
         },
 
         collaborator: {
           quote:
-            "Lyhour 对每个项目都充满热情并保持积极的态度。他专注于将想法转化为实际应用，并通过实践不断提升自己的技能。",
+            "Lihuo 对每个项目都充满热情并保持积极的态度。他专注于将想法转化为实际应用，并通过实践不断提升自己的技能。",
           author: "Development Collaborator",
           role: "Project Teammate",
         },
