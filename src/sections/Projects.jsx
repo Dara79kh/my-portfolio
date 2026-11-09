@@ -29,7 +29,7 @@ const projects = [
   },
   {
     key: "khmerbiz",
-    image: "/projects/project3.png",
+    image: "/projects/project3s.png",
     tags: ["React", "AI", "JavaScript", "API Integration", "Database"],
     link: "#",
     github: "https://github.com/Lihuohor79-developer",
