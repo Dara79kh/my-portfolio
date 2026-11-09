@@ -1,4 +1,4 @@
-# 👋 Hi, I'm Lyhour Hor
+# Hi, I'm Lihuo Hor
 
 ### Full Stack Developer | Backend Engineer | DevOps & AI Enthusiast
 
