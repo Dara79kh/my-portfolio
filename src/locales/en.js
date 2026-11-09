@@ -120,7 +120,7 @@ const en = {
         },
 
         khmerbiz: {
-          title: "KhmerBiz AI",
+          title: "SquareCG",
           description:
             "An AI-powered platform designed to help businesses improve productivity and access intelligent digital tools. The project focuses on combining modern web technologies with AI to solve practical business problems.",
         },

@@ -121,7 +121,7 @@ const km = {
         },
 
         khmerbiz: {
-          title: "KhmerBiz AI",
+          title: "SquareCG",
           description:
             "Platform ដែលប្រើ AI ដើម្បីជួយអាជីវកម្មបង្កើនផលិតភាព និងប្រើប្រាស់ឧបករណ៍ឌីជីថលឆ្លាតវៃ។",
         },

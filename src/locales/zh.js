@@ -116,7 +116,7 @@ const zh = {
         },
 
         khmerbiz: {
-          title: "KhmerBiz AI",
+          title: "SquareCG",
           description:
             "一个由 AI 驱动的平台，旨在帮助企业提高生产力并使用智能数字工具，将现代 Web 技术与 AI 结合起来解决实际商业问题。",
         },
