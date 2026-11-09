@@ -31,7 +31,7 @@ const projects = [
     key: "khmerbiz",
     image: "/projects/project3s.png",
     tags: ["React", "AI", "JavaScript", "API Integration", "Database"],
-    link: "#",
+    link: "https://square-cg.vercel.app/",
     github: "https://github.com/Lihuohor79-developer",
   },
   {
