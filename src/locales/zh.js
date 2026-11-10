@@ -34,6 +34,21 @@ const zh = {
       scroll: "向下滚动",
       available: "正在寻找工作机会",
       yearsExp: "年经验",
+
+      skills: {
+        label: "技术栈",
+
+        description:
+          "我使用的技术、框架和工具，用于构建现代化且可扩展的数字解决方案。",
+
+        count: "{{count}} 项技术与工具",
+
+        showMore: "探索全部技术（还有 {{count}} 项）",
+
+        showLess: "收起",
+
+        footer: "持续学习，不断创造。",
+      },
     },
 
     about: {

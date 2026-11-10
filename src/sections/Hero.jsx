@@ -190,7 +190,7 @@ export const Hero = () => {
                 {/* Floating Badge */}
                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
                   <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                    <div className="w-3 h-3 bg-primary rounded-full animate-pulse" />
 
                     <span className="text-sm font-medium">
                       {t("hero.available")}
@@ -212,10 +212,6 @@ export const Hero = () => {
         </div>
 
         {/* Skills Section */}
-
-        {/* Skills Section */}
-
-        {/* Skills Section */}
         <div className="relative mt-24 sm:mt-28 lg:mt-32 animate-fade-in animation-delay-600">
           {/* Ambient Background */}
           <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-80 w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.055] blur-[110px]" />
@@ -224,7 +220,7 @@ export const Hero = () => {
           <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-12">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.07] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary sm:text-xs">
               <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_#4f8cff]" />
-              Technology Stack
+              {t("hero.skills.label")}
             </span>
 
             <h2 className="mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
@@ -232,15 +228,15 @@ export const Hero = () => {
             </h2>
 
             <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Technologies, frameworks, and tools I work with to build modern
-              and scalable digital solutions.
+              {t("hero.skills.description")}
             </p>
 
             {/* Technology Count */}
             <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/[0.06] bg-white/[0.025] px-4 py-2">
               <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+
               <span className="text-xs font-medium text-muted-foreground">
-                {skills.length} Technologies & Tools
+                {t("hero.skills.count", { count: skills.length })}
               </span>
             </div>
           </div>
@@ -248,10 +244,10 @@ export const Hero = () => {
           {/* Technology Cards */}
           <div
             id="technology-stack"
-            className={`mx-auto grid max-w-6xl grid-cols-2 gap-3 overflow-hidden sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 lg:gap-5 transition-[max-height] duration-700 ease-in-out ${
+            className={`mx-auto grid max-w-6xl grid-cols-2 gap-3 overflow-hidden pt-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 lg:gap-5 transition-[max-height] duration-700 ease-in-out ${
               showAllSkills
                 ? "max-h-[3000px]"
-                : "max-h-[600px] sm:max-h-[500px] md:max-h-[360px]"
+                : "max-h-[620px] sm:max-h-[520px] md:max-h-[380px]"
             }`}
           >
             {skills.map((skill, idx) => {
@@ -266,7 +262,7 @@ export const Hero = () => {
               return (
                 <div
                   key={skill.name}
-                  className={`group relative flex min-h-[138px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d1420]/75 px-3 py-5 text-center shadow-[0_4px_20px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-300 ease-out hover:-translate-y-1.5 hover:bg-[#111d2d] hover:shadow-[0_15px_35px_rgba(79,140,255,0.10)] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:min-h-[155px] sm:rounded-3xl sm:px-4 sm:py-6 ${accentColors[idx % accentColors.length]}`}
+                  className={`group relative flex min-h-[138px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d1420]/75 px-3 py-5 text-center shadow-[0_4px_20px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-300 ease-out hover:-translate-y-1 will-change-transform hover:bg-[#111d2d] hover:shadow-[0_15px_35px_rgba(79,140,255,0.10)] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:min-h-[155px] sm:rounded-3xl sm:px-4 sm:py-6 ${accentColors[idx % accentColors.length]}`}
                 >
                   {/* Background Glow */}
                   <div className="pointer-events-none absolute -right-12 -top-12 h-28 w-28 rounded-full bg-primary/15 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
@@ -290,7 +286,7 @@ export const Hero = () => {
                     )}
                   </div>
 
-                  {/* Technology Name */}
+                  {/* Technology Name - Keep Original */}
                   <span className="relative z-10 max-w-full break-words text-xs font-semibold leading-relaxed tracking-wide text-muted-foreground transition-colors duration-300 group-hover:text-foreground sm:text-sm">
                     {skill.name}
                   </span>
@@ -314,8 +310,10 @@ export const Hero = () => {
               >
                 <span>
                   {showAllSkills
-                    ? "Show Less"
-                    : `Explore All Technologies (${skills.length - 8} more)`}
+                    ? t("hero.skills.showLess")
+                    : t("hero.skills.showMore", {
+                        count: skills.length - 8,
+                      })}
                 </span>
 
                 <ChevronDown
@@ -332,7 +330,7 @@ export const Hero = () => {
             <span className="h-px w-8 bg-gradient-to-r from-transparent to-border" />
 
             <p className="text-center text-xs font-medium tracking-wide text-muted-foreground/70">
-              Always learning. Always building.
+              {t("hero.skills.footer")}
             </p>
 
             <span className="h-px w-8 bg-gradient-to-l from-transparent to-border" />

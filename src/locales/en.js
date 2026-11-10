@@ -34,6 +34,21 @@ const en = {
       scroll: "Scroll",
       available: "Available for work",
       yearsExp: "Years Exp.",
+
+      skills: {
+        label: "Technology Stack",
+
+        description:
+          "Technologies, frameworks, and tools I work with to build modern and scalable digital solutions.",
+
+        count: "{{count}} Technologies & Tools",
+
+        showMore: "Explore All Technologies ({{count}} more)",
+
+        showLess: "Show Less",
+
+        footer: "Always learning. Always building.",
+      },
     },
 
     about: {
