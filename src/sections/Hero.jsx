@@ -20,6 +20,7 @@ import mongodbIcon from "../assets/technologies/mongodb.svg";
 import rabbitmqIcon from "../assets/technologies/rabbitmq.svg";
 import tailwindIcon from "../assets/technologies/tailwind.svg";
 import awsIcon from "../assets/technologies/aws.svg";
+import { useState } from "react";
 
 const skills = [
   { name: "React.js", image: reactIcon },
@@ -47,6 +48,7 @@ const skills = [
 
 export const Hero = () => {
   const { t } = useTranslation();
+  const [showAllSkills, setShowAllSkills] = useState(false);
 
   const socialLinks = [
     {
@@ -213,12 +215,13 @@ export const Hero = () => {
 
         {/* Skills Section */}
 
+        {/* Skills Section */}
         <div className="relative mt-24 sm:mt-28 lg:mt-32 animate-fade-in animation-delay-600">
           {/* Ambient Background */}
           <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-80 w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.055] blur-[110px]" />
 
           {/* Section Header */}
-          <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
+          <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-12">
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.07] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary sm:text-xs">
               <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_#4f8cff]" />
               Technology Stack
@@ -243,7 +246,14 @@ export const Hero = () => {
           </div>
 
           {/* Technology Cards */}
-          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 lg:gap-5">
+          <div
+            id="technology-stack"
+            className={`mx-auto grid max-w-6xl grid-cols-2 gap-3 overflow-hidden sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 lg:gap-5 transition-[max-height] duration-700 ease-in-out ${
+              showAllSkills
+                ? "max-h-[3000px]"
+                : "max-h-[600px] sm:max-h-[500px] md:max-h-[360px]"
+            }`}
+          >
             {skills.map((skill, idx) => {
               const accentColors = [
                 "hover:border-blue-400/40",
@@ -256,7 +266,7 @@ export const Hero = () => {
               return (
                 <div
                   key={skill.name}
-                  className={`group relative flex min-h-[138px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d1420]/75 px-3 py-5 text-center shadow-[0_4px_20px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-[transform,border-color,background-color,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:bg-[#111d2d] hover:shadow-[0_15px_35px_rgba(79,140,255,0.10)] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:min-h-[155px] sm:rounded-3xl sm:px-4 sm:py-6 ${accentColors[idx % accentColors.length]}`}
+                  className={`group relative flex min-h-[138px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d1420]/75 px-3 py-5 text-center shadow-[0_4px_20px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-all duration-300 ease-out hover:-translate-y-1.5 hover:bg-[#111d2d] hover:shadow-[0_15px_35px_rgba(79,140,255,0.10)] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:min-h-[155px] sm:rounded-3xl sm:px-4 sm:py-6 ${accentColors[idx % accentColors.length]}`}
                 >
                   {/* Background Glow */}
                   <div className="pointer-events-none absolute -right-12 -top-12 h-28 w-28 rounded-full bg-primary/15 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
@@ -291,6 +301,31 @@ export const Hero = () => {
               );
             })}
           </div>
+
+          {/* Expand / Collapse Button */}
+          {skills.length > 8 && (
+            <div className="relative z-10 mt-8 flex justify-center sm:mt-10">
+              <button
+                type="button"
+                onClick={() => setShowAllSkills((prev) => !prev)}
+                aria-expanded={showAllSkills}
+                aria-controls="technology-stack"
+                className="group inline-flex items-center gap-3 rounded-full border border-primary/25 bg-gradient-to-r from-primary/[0.12] to-cyan-400/[0.06] px-6 py-3 text-sm font-semibold text-foreground shadow-[0_0_25px_rgba(79,140,255,0.07)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(79,140,255,0.16)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                <span>
+                  {showAllSkills
+                    ? "Show Less"
+                    : `Explore All Technologies (${skills.length - 8} more)`}
+                </span>
+
+                <ChevronDown
+                  className={`h-4 w-4 text-primary transition-transform duration-500 ${
+                    showAllSkills ? "rotate-180" : "group-hover:translate-y-0.5"
+                  }`}
+                />
+              </button>
+            </div>
+          )}
 
           {/* Section Footer */}
           <div className="mt-10 flex items-center justify-center gap-3 sm:mt-12">
