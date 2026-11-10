@@ -210,41 +210,97 @@ export const Hero = () => {
         </div>
 
         {/* Skills Section */}
-        <div className="mt-20 animate-fade-in animation-delay-600">
-          <p className="text-sm text-muted-foreground mb-6 text-center">
-            {t("hero.technologies")}
-          </p>
 
-          <div className="relative overflow-hidden">
-            <div className="flex animate-marquee">
-              {[...skills, ...skills].map((skill, idx) => (
-                <div
-                  key={`${skill.name}-${idx}`}
-                  className="flex-shrink-0 px-3 py-4 sm:px-4"
-                >
-                  <div className="group relative flex h-20 w-28 flex-col items-center justify-center gap-2 rounded-2xl border border-white/[0.07] bg-[#0d1420]/80 px-3 backdrop-blur-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.03] hover:border-primary/40 hover:bg-[#111a28] hover:shadow-[0_18px_45px_rgba(79,140,255,0.18)] sm:h-24 sm:w-32">
-                    {/* Soft glow behind card */}
-                    <div className="pointer-events-none absolute inset-x-4 -bottom-3 h-5 rounded-full bg-primary/20 opacity-0 blur-xl transition-all duration-500 group-hover:opacity-100" />
+        {/* Skills Section */}
 
-                    {/* Technology Icon */}
-                    {skill.image && (
-                      <div className="relative z-10 transition-all duration-500 ease-out group-hover:-translate-y-1">
-                        <img
-                          src={skill.image}
-                          alt={`${skill.name} icon`}
-                          className="h-8 w-8 object-contain opacity-55 grayscale transition-all duration-500 ease-out group-hover:scale-110 group-hover:opacity-100 group-hover:grayscale-0"
-                        />
-                      </div>
-                    )}
+        <div className="relative mt-24 sm:mt-28 lg:mt-32 animate-fade-in animation-delay-600">
+          {/* Ambient Background */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-80 w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.055] blur-[110px]" />
 
-                    {/* Technology Name */}
-                    <span className="relative z-10 text-center text-[10px] font-semibold text-muted-foreground/70 transition-all duration-500 group-hover:text-foreground sm:text-xs">
-                      {skill.name}
-                    </span>
-                  </div>
-                </div>
-              ))}
+          {/* Section Header */}
+          <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-14">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/[0.07] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-primary sm:text-xs">
+              <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_#4f8cff]" />
+              Technology Stack
+            </span>
+
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              {t("hero.technologies")}
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Technologies, frameworks, and tools I work with to build modern
+              and scalable digital solutions.
+            </p>
+
+            {/* Technology Count */}
+            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-white/[0.06] bg-white/[0.025] px-4 py-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+              <span className="text-xs font-medium text-muted-foreground">
+                {skills.length} Technologies & Tools
+              </span>
             </div>
+          </div>
+
+          {/* Technology Cards */}
+          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 lg:gap-5">
+            {skills.map((skill, idx) => {
+              const accentColors = [
+                "hover:border-blue-400/40",
+                "hover:border-cyan-400/40",
+                "hover:border-violet-400/40",
+                "hover:border-indigo-400/40",
+                "hover:border-sky-400/40",
+              ];
+
+              return (
+                <div
+                  key={skill.name}
+                  className={`group relative flex min-h-[138px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0d1420]/75 px-3 py-5 text-center shadow-[0_4px_20px_rgba(0,0,0,0.12)] backdrop-blur-xl transition-[transform,border-color,background-color,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:bg-[#111d2d] hover:shadow-[0_15px_35px_rgba(79,140,255,0.10)] active:scale-[0.98] motion-reduce:transform-none motion-reduce:transition-none sm:min-h-[155px] sm:rounded-3xl sm:px-4 sm:py-6 ${accentColors[idx % accentColors.length]}`}
+                >
+                  {/* Background Glow */}
+                  <div className="pointer-events-none absolute -right-12 -top-12 h-28 w-28 rounded-full bg-primary/15 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+
+                  {/* Top Gradient Line */}
+                  <div className="absolute left-1/2 top-0 h-px w-0 -translate-x-1/2 bg-gradient-to-r from-transparent via-primary to-transparent transition-all duration-500 group-hover:w-4/5" />
+
+                  {/* Technology Icon */}
+                  <div className="relative z-10 mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.07] bg-white/[0.035] transition-all duration-300 ease-out group-hover:scale-110 group-hover:border-primary/20 group-hover:bg-primary/[0.08] sm:h-14 sm:w-14">
+                    {skill.image ? (
+                      <img
+                        src={skill.image}
+                        alt={`${skill.name} icon`}
+                        loading="lazy"
+                        className="h-7 w-7 object-contain transition-transform duration-300 group-hover:scale-110 sm:h-8 sm:w-8"
+                      />
+                    ) : (
+                      <span className="text-xl font-bold text-primary">
+                        {skill.name.charAt(0)}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Technology Name */}
+                  <span className="relative z-10 max-w-full break-words text-xs font-semibold leading-relaxed tracking-wide text-muted-foreground transition-colors duration-300 group-hover:text-foreground sm:text-sm">
+                    {skill.name}
+                  </span>
+
+                  {/* Bottom Accent */}
+                  <div className="absolute bottom-0 left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-gradient-to-r from-blue-400 via-cyan-400 to-violet-400 transition-all duration-500 group-hover:w-1/2" />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Section Footer */}
+          <div className="mt-10 flex items-center justify-center gap-3 sm:mt-12">
+            <span className="h-px w-8 bg-gradient-to-r from-transparent to-border" />
+
+            <p className="text-center text-xs font-medium tracking-wide text-muted-foreground/70">
+              Always learning. Always building.
+            </p>
+
+            <span className="h-px w-8 bg-gradient-to-l from-transparent to-border" />
           </div>
         </div>
       </div>
